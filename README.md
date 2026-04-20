@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+# App Refresh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application built with Vite and TypeScript for managing app refresh controls and version management. This project provides components for handling refresh behaviors, version cards, and APIs for checking refresh information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Refresh Control**: Interactive component for managing app refresh states
+- **Version Cards**: Display and manage application versions
+- **Refresh Behavior Utils**: Utilities for handling refresh logic
+- **API Integration**: Axios-based API client for refresh information checks
+- **Modern UI**: Styled with Tailwind CSS for a responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 19, TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **State Management**: TanStack React Query
+- **HTTP Client**: Axios
+- **Linting**: ESLint with TypeScript support
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd app-refresh
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Start the development server:
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Build the application for production:
+```bash
+npm run build
 ```
+
+Preview the production build:
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── apis/
+│   └── checkRefreshInfo/
+│       ├── checkRefreshInfo.type.ts
+│       └── index.ts
+├── assets/
+├── components/
+│   ├── refresh-control.tsx
+│   └── version-card.tsx
+├── utils/
+│   └── refresh-behavior.ts
+├── App.css
+├── App.tsx
+├── index.css
+└── main.tsx
+```
+
+- `apis/`: API client and type definitions for refresh information
+- `components/`: React components for refresh control and version display
+- `utils/`: Utility functions for refresh behavior logic
+
+## Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run lint`: Run ESLint
+- `npm run preview`: Preview production build
+
+## Linting
+
+The project uses ESLint for code quality. Run linting with:
+```bash
+npm run lint
+```
+
+For production applications, consider enabling type-aware lint rules as described in the ESLint configuration.
